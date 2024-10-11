@@ -6,6 +6,6 @@ A simple script that generates a software bill of materials (list of all depende
 
 ## Usage
 
-Running `npm run start` will prompt you to choose either a normal (from `package.json`) or an extended (from `package-lock.json`) bill of materials.
+Running `npm start` will prompt you to choose either a normal (from `package.json`) or an extended (from `package-lock.json`) bill of materials.
 
 
