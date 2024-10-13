@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const inquirer = require("inquirer").default;
 const fs = require("node:fs/promises");
 
@@ -25,7 +27,7 @@ const generateBom = async (name, extended = false) => {
 
     if (extended) {
         for (const [pack, curr] of Object.entries(source.packages)) {
-            if (curr.devDependencies) {
+            if (pack === "") {
                 await iterateDeps(curr.dependencies, fileName);
                 await iterateDeps(curr.devDependencies, fileName);
             } else {
