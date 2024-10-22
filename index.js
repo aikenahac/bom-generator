@@ -2,6 +2,7 @@
 
 const inquirer = require("inquirer").default;
 const fs = require("node:fs/promises");
+const path = require('path');
 
 const formatDependency = (name, version, indent = false, url = `https://npmjs.com/package/${name}`) =>
     `${indent ? "|__ " : ""}[${name} (${version})](${url})\n`;
@@ -15,9 +16,9 @@ const iterateDeps = async (deps, file, indent = false) => {
 
 const generateBom = async (name, extended = false) => {
     const fileName = extended ? "BOM-ext.md" : "BOM.md";
-    const sourceFile = extended ? "./package-lock.json" : "./package.json";
+    const sourceFile = path.join(process.cwd(), extended ? "package-lock.json" : "package.json");
     const source = require(sourceFile);
-
+    
     await fs.writeFile(fileName, `# ${extended ? 'Extended ' : ''}Bill of Materials ${name}\n\n`);
 
     if (!source) {
