@@ -1,6 +1,6 @@
 {
   "name": "bom-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bill of Material generator for NodeJS projects",
   "main": "index.js",
   "scripts": {
@@ -12,5 +12,10 @@
   "license": "MIT",
   "devDependencies": {
     "inquirer": "^12.0.0"
-  }
+  },
+  "keywords": [
+    "bill of materials",
+    "documentation",
+    "dependencies"
+  ]
 }
