@@ -1,6 +1,6 @@
 {
   "name": "bom-generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Bill of Material generator for NodeJS projects",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,9 @@
     "bill of materials",
     "documentation",
     "dependencies"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aikenahac/bom-generator"
+  }
 }
