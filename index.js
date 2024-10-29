@@ -57,7 +57,7 @@ const generateBom = async (name, extended = false) => {
             message: "Would you like an extended or normal bom?\n    normal - from package.json\n    extended - from package-lock.json",
             choices: ["normal", "extended"],
         },
-]);
+    ]);
 
     generateBom(title, type === "extended");
 })();
