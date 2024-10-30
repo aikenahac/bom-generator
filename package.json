@@ -1,13 +1,15 @@
 {
   "name": "bom-generator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Bill of Materials generator for NodeJS projects",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": "chmod +x ./index.js && ./index.js",
+  "bin": {
+
+  },
   "author": "Aiken Tine Ahac",
   "license": "MIT",
   "devDependencies": {
