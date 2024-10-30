@@ -32,7 +32,7 @@ const generateBom = async (name, extended = false, fileName) => {
 
   await fs.writeFile(
     file,
-    `# ${extended ? 'Extended ' : ''}Bill of Materials ${name}\n\n`,
+    `# Bill of Materials - ${name}\n\n`,
   );
 
   if (!source) {
