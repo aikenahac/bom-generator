@@ -1,4 +1,4 @@
-# Software Bill of Material Generator
+# Software Bill of Materials Generator
 
 ## Usage
 
