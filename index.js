@@ -59,7 +59,7 @@ const generateBom = async (name, extended = false, fileName) => {
       }
     }
   } else {
-    await iterateDeps(source.dependencies, fileName);
+    await iterateDeps(source.dependencies, file);
     await iterateDeps(source.devDependencies, file);
   }
 
