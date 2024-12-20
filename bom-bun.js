@@ -1,14 +1,10 @@
 // Bill Of Materials generator
 // Creates a file containing a readable Bill of Materials (BOM) for the project.
-import { format } from 'date-fns';
 import inquirer from 'inquirer';
 import * as fs from 'node:fs';
 
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-
-const appVersion = require('./version.json');
-const appName = 'Messenger for Untis';
 
 const PACKAGE_RE = /(\S+)@(\S+)/g;
 
@@ -41,25 +37,17 @@ function formatDependency(dep) {
 }
 
 function getFileName(extended = false) {
-  const dateFormatted = format(new Date(), 'yyyyMMdd');
-  const version = `${appVersion.buildNumber}`;
+  const dateFormatted = new Date().toISOString().split('T')[0];
 
-  return `BOM${extended ? '_ext_' : '_'}${dateFormatted}_${version}.md`;
+  return `BOM${extended ? '_ext_' : '_'}${dateFormatted}.md`;
 }
 
 function getHeader(extended = false) {
-  const dateFormatted = format(new Date(), 'yyyy-MM-dd');
-  return `# ${appName} BOM${
-    extended ? ' - extended' : ''
-  } (${dateFormatted})\nVersion: ${appVersion.version} (${
-    appVersion.buildNumber
-  })\n\n`;
+  const dateFormatted = new Date().toISOString().split('T')[0];
+  return `# BOM${extended ? ' - extended' : ''} (${dateFormatted})\n\n`;
 }
 
-async function generateBom(
-  extended = false,
-  dir = `./bom/v${appVersion.version}`,
-) {
+async function generateBom(extended = false, dir = `./bom/`) {
   const fileName = getFileName(extended);
   const path = `${dir}/${fileName}`;
   const command = `bun pm ls ${extended ? '--all' : ''}`;
