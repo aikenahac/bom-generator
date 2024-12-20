@@ -104,13 +104,6 @@ async function getBom(type) {
   }
 }
 
-async function runSendToSlack(filePath, slackUserIds, comment) {
-  // Upload to slack
-  require('child_process').execSync(
-    `node build-send-to-slack.js ${process.env.SLACK_TOKEN} ${filePath} ${slackUserIds} "${comment}"`,
-  );
-}
-
 async function main() {
   const standard =
     'standard - installed dependencies in the current project and their resolved versions, excluding their dependencies.';
@@ -126,38 +119,7 @@ async function main() {
     },
   ]);
 
-  let slackUserIds = '';
-  // Prompt user to select slack handle
-  const userIdsPrompt = await inquirer.prompt({
-    type: 'input',
-    name: 'slackUserIds',
-    default: 'U03RAFFL3HD,U03HSE5MT4L',
-    message:
-      'Enter the userId(s) to which the file will be sent (optional). Skip uploading to Slack by entering N (case-insensitive):',
-  });
-  slackUserIds = userIdsPrompt.slackUserIds;
-
-  if (slackUserIds.trim().toLowerCase() !== 'n') {
-    const files = await getBom(type);
-    // Upload to slack
-    for (const file of files) {
-      if (!file) {
-        continue;
-      }
-      let initialComment = '';
-      const prompt = await inquirer.prompt({
-        type: 'input',
-        name: 'initialComment',
-        default: 'BOM',
-        message:
-          'Enter the initial comment to be sent with the file (optional):',
-      });
-      initialComment = prompt.initialComment.trim();
-      await runSendToSlack(file.path, slackUserIds, initialComment);
-    }
-  } else {
-    getBom(type);
-  }
+  getBom(type);
 }
 
 main();
