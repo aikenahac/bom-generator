@@ -1,6 +1,6 @@
 {
   "name": "bom-generator",
-  "version": "1.2.0",
+  "version": "1.2.5",
   "description": "Bill of Materials generator for NodeJS projects",
   "main": "index.js",
   "scripts": {
