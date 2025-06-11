@@ -6,6 +6,15 @@
 npx bom-generator
 ```
 
+### CLI options
+
+| Option | Description |
+| --- | --- |
+| `--name` | Name of the project |
+| `--type` | Type of the project |
+| `--package-manager` | Package manager used by the project |
+| `--file` | Name of the file to generate |
+
 ## About
 
 A simple script that generates a software bill of materials (list of all dependencies used by the project) for NodeJS projects from either:
